@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <table>
+        <tr v-for="lines in codeGrid">
+          <th v-for="code in lines" :key="code.n">{{ code.n }}</th>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          codeGrid: [],
+          grid : {
+            col: 9,
+            line: 9
+          },
+          fixedCode: {
+            line: 0,
+            col: 0,
+            number: 5
+          },
+          timer: {
+            min: 700,
+            max: 1500
+          }
+        }
+      },
+      methods: {
+        getRndInteger(min, max) {
+          return Math.floor(Math.random() * (max - min + 1) ) + min;
+        },
+        drawRandomNumber(line, col) {
+          this.codeGrid[line][col] = { n: this.getRndInteger(0, 9) };
+        }
+      },
+      created() {
+        // init grid and timers
+        for (let line = 0; line < this.grid.line; line++) {
+          this.codeGrid[line] = [];
+          for (let col = 0; col < this.grid.col; col++) {
+            // if fixed code number
+            if (line === this.fixedCode.line && col === this.fixedCode.col) {
+              this.codeGrid[line][col] = { n: this.fixedCode.number };
+            } else {
+              // random between 0 and 9
+              setInterval(this.drawRandomNumber, this.getRndInteger(this.timer.min, this.timer.max), line, col);
+              this.codeGrid[line][col] = { n: this.getRndInteger(0, 9) };
+            }
+          }
+        }
+      },
+    });
+    const vm = app.mount('#app');
+  </script>
+</html>
