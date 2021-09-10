@@ -1,6 +1,24 @@
 <html>
   <head>
     <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const loc = window.location;
+      const url = new URL(loc);
+      
+      const GRID_LINE = parseInt(url.searchParams.get('grid_line'));
+      const GRID_COL = parseInt(url.searchParams.get('grid_col'));
+
+      const FIXED_CODE_LINE = parseInt(url.searchParams.get('fixed_code_line'));
+      const FIXED_CODE_COL = parseInt(url.searchParams.get('fixed_code_col'));
+      const FIXED_CODE_NUMBER = parseInt(url.searchParams.get('fixed_code_number'));
+
+      const TIMER_MIN = parseInt(url.searchParams.get('timer_min'));
+      const TIMER_MAX = parseInt(url.searchParams.get('timer_max'));
+
+      console.log({
+        GRID_COL, GRID_LINE, FIXED_CODE_COL, FIXED_CODE_LINE, FIXED_CODE_NUMBER, TIMER_MIN, TIMER_MAX
+      })
+    </script>
   </head>
   <body>
     <div id="app">
@@ -17,17 +35,17 @@
         return {
           codeGrid: [],
           grid : {
-            col: 9,
-            line: 9
+            col: GRID_LINE || 9,
+            line: GRID_COL || 9
           },
           fixedCode: {
-            line: 0,
-            col: 0,
-            number: 5
+            line: FIXED_CODE_LINE || 0,
+            col: FIXED_CODE_COL || 0,
+            number: FIXED_CODE_NUMBER || 5
           },
           timer: {
-            min: 700,
-            max: 1500
+            min: TIMER_MIN || 700,
+            max: TIMER_MAX || 1500
           }
         }
       },
