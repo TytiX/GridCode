@@ -5,10 +5,17 @@
       body {
         font-family: monospace, sans-serif;
       }
+      .container { 
+        height: 100%;
+        position: relative;
+      }
       .center {
-        margin: auto;
-        width: 60%;
-        padding: 10px;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
       }
     </style>
     <script src="https://unpkg.com/vue@next"></script>
@@ -32,7 +39,7 @@
     </script>
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="container">
       <table class="center">
         <tr v-for="lines in codeGrid">
           <th v-for="code in lines" :key="code.n">{{ code.n }}</th>

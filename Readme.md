@@ -23,6 +23,9 @@ Les timers pour le changement des nombres est aléatoire. Pour regler le max et 
 
 # Exemple de parametrage complet
 
+## Test avec 5x5
+https://tytix.github.io/GridCode/?fixed_code_col=0&fixed_code_line=0&fixed_code_number=3&grid_col=5&grid_line=5&timer_max=1000&timer_min=500
+
 https://tytix.github.io/GridCode/?fixed_code_col=0&fixed_code_line=0&fixed_code_number=3&grid_col=3&grid_line=3&timer_max=1500&timer_min=500
 
 ?grid_line=3&grid_col=3&fixed_code_line=0&fixed_code_col=0&fixed_code_number=3&timer_min=500&timer_max=1500
